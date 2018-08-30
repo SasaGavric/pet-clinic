@@ -4,7 +4,7 @@
 
     <groupId>com.sasagavric</groupId>
     <artifactId>pet-clinic</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <version>0.0.3</version>
     <packaging>jar</packaging>
 
     <name>pet-clinic</name>
@@ -79,9 +79,10 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
                     <goals>install</goals>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+
                     <checkModificationExcludes>
                         <checkModificationExclude>pom.xml</checkModificationExclude>
-                        <autoVersionSubmodules>true</autoVersionSubmodules>
                     </checkModificationExcludes>
                 </configuration>
             </plugin>
@@ -90,7 +91,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/SasaGavric/pet-clinic.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>pet-clinic-0.0.3</tag>
   </scm>
 
 
