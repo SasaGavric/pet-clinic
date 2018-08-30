@@ -1,6 +1,8 @@
 package com.sasagavric.petclinic.model;
 
-public class PetType {
+import com.fasterxml.jackson.databind.ser.Serializers;
+
+public class PetType extends Serializers.Base {
 
     private String name;
 
