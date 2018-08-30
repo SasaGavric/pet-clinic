@@ -90,7 +90,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/SasaGavric/pet-clinic.git</developerConnection>
-      <tag>HEAD</tag>
+        <tag>HEAD</tag>
   </scm>
 
 
