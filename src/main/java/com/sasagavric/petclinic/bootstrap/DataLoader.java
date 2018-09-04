@@ -1,6 +1,7 @@
 package com.sasagavric.petclinic.bootstrap;
 
 import com.sasagavric.petclinic.model.Owner;
+import com.sasagavric.petclinic.model.Vet;
 import com.sasagavric.petclinic.service.OwnerService;
 import com.sasagavric.petclinic.service.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,33 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
         System.out.println("Start loading...");
+
+        loadOwners();
+        loadVets();
+
+        System.out.println("Loading completed...");
+
+    }
+
+    public void loadVets(){
+        Vet vet1 = new Vet();
+        vet1.setId(1L);
+        vet1.setFirstName("Joe");
+        vet1.setLastName("Cole");
+
+        vetService.save(vet1);
+
+        Vet vet2 = new Vet();
+        vet2.setId(2L);
+        vet2.setFirstName("Marry");
+        vet2.setLastName("Rodman");
+
+        vetService.save(vet2);
+    }
+
+
+    public void loadOwners(){
 
         Owner owner1 = new Owner();
         owner1.setId(1L);
@@ -52,6 +78,5 @@ public class DataLoader implements CommandLineRunner {
 
         ownerService.save(owner4);
 
-        System.out.println("Loading completed...");
     }
 }
