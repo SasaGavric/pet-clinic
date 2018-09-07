@@ -1,8 +1,10 @@
 package com.sasagavric.petclinic.bootstrap;
 
 import com.sasagavric.petclinic.model.Owner;
+import com.sasagavric.petclinic.model.PetType;
 import com.sasagavric.petclinic.model.Vet;
 import com.sasagavric.petclinic.service.OwnerService;
+import com.sasagavric.petclinic.service.PetTypeService;
 import com.sasagavric.petclinic.service.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,23 +15,26 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService){
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService){
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Start loading...");
 
-        loadOwners();
+        loadOwnersAndPets();
         loadVets();
 
         System.out.println("Loading completed...");
 
     }
+
 
     public void loadVets(){
         Vet vet1 = new Vet();
@@ -46,7 +51,16 @@ public class DataLoader implements CommandLineRunner {
     }
 
 
-    public void loadOwners(){
+    public void loadOwnersAndPets(){
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        PetType savedDogPetType = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+        PetType savedCatPetType = petTypeService.save(cat);
+
 
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
