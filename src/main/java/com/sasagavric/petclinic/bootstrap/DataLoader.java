@@ -1,6 +1,7 @@
 package com.sasagavric.petclinic.bootstrap;
 
 import com.sasagavric.petclinic.model.Owner;
+import com.sasagavric.petclinic.model.Pet;
 import com.sasagavric.petclinic.model.PetType;
 import com.sasagavric.petclinic.model.Vet;
 import com.sasagavric.petclinic.service.OwnerService;
@@ -9,6 +10,8 @@ import com.sasagavric.petclinic.service.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -65,24 +68,50 @@ public class DataLoader implements CommandLineRunner {
         Owner owner1 = new Owner();
         owner1.setFirstName("Michael");
         owner1.setLastName("Weston");
+        owner1.setAddress("Venice Beach");
+        owner1.setCity("Los Angeles");
+        owner1.setTelephone("004412345432");
+
+        Pet mikesPet = new Pet();
+        mikesPet.setName("Rusty");
+        mikesPet.setPetType(savedDogPetType);
+        mikesPet.setOwner(owner1);
+        mikesPet.setBirthDate(LocalDate.now());
+        owner1.getPets().add(mikesPet);
 
         ownerService.save(owner1);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("John");
         owner2.setLastName("Doe");
+        owner2.setAddress("Venice Beach");
+        owner2.setCity("Los Angeles");
+        owner2.setTelephone("001241551521");
+
+        Pet johnsPet = new Pet();
+        mikesPet.setName("Kitty");
+        mikesPet.setPetType(savedCatPetType);
+        mikesPet.setOwner(owner2);
+        mikesPet.setBirthDate(LocalDate.now());
+        owner1.getPets().add(johnsPet);
 
         ownerService.save(owner2);
 
         Owner owner3 = new Owner();
         owner3.setFirstName("Sam");
         owner3.setLastName("Axe");
+        owner3.setAddress("Malibu");
+        owner3.setCity("Los Angeles");
+        owner3.setTelephone("004142124");
 
         ownerService.save(owner3);
 
         Owner owner4 = new Owner();
         owner4.setFirstName("Fiona");
         owner4.setLastName("Glenanne");
+        owner4.setAddress("Malibu");
+        owner4.setCity("Los Angeles");
+        owner4.setTelephone("004142214142");
 
         ownerService.save(owner4);
 
